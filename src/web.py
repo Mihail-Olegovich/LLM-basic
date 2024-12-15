@@ -1,12 +1,13 @@
 import gradio as gr
 
+
 class ChatbotInterface:
     def __init__(self, rag_chain):
         self.rag_chain = rag_chain
 
     def respond(self, message, history):
         response = self.rag_chain({"query": message})
-        return response['result']
+        return response["result"]
 
     def launch(self):
         with gr.Blocks() as demo:
@@ -28,4 +29,6 @@ class ChatbotInterface:
             )
             clear.click(lambda: None, None, chatbot, queue=False)
 
-        demo.launch(server_name="0.0.0.0", server_port=7860, show_error=True)
+        demo.launch(
+            server_name="0.0.0.0", server_port=7860, show_error=True, share=True
+        )

@@ -1,5 +1,7 @@
 import os
+
 from langchain.chat_models.gigachat import GigaChat
+
 
 class GigaChatManager:
     def __init__(self):
@@ -8,7 +10,7 @@ class GigaChatManager:
             credentials=self.giga_key,
             model="GigaChat-Pro",
             timeout=30,
-            verify_ssl_certs=False
+            verify_ssl_certs=False,
         )
 
     def get_response(self, prompt):
